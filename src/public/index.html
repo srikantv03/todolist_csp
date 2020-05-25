@@ -1,0 +1,76 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AP CSP ToDo List</title>
+  <link rel="stylesheet" href="styles/style.css">
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+</head>
+
+<body>
+
+	<div id="myModal" class="popup">
+		<center>
+  		<div id="popupArea" class="popup-content">
+    		<span class="close">&times;</span>
+    		<p>Choose Tasks to Clear</p>
+  		</div>
+  	</center>
+	</div>
+	<center>
+		<div id="webApp">
+			<h1> TO DO LIST </h1>
+			<h3> The best to-do list ever! </h3>
+			<div id="bordered">
+				<br>
+				<button id="toggler" onclick="toggle()" >HIDE CREATE TAB</button>
+				<button id="popupButton"> CLEAR TASKS</button>
+				<table width="90%">
+					<tr>
+						<th width="50%"  id="createLabel" style="float: center">
+							<h3>Create Task</h3>
+						</th>
+						<th id="tasksLabel" width="50%">
+							<h3>Tasks List</h3>
+						</th>
+					</tr>
+					<tr>
+						<td id="create">
+							<div>
+								<h3> NAME </h3>
+								<input type="text" id="newItem">
+								<br>
+								<h3> IMPORTANCE </h3>
+								<select id="importance">
+									<option value="low"> Low Importance </option>
+									<option value="medium"> Medium Importance </option>
+									<option value="high"> High Importance </option>
+								</select>
+								<br>
+								<h3> COMPLETION DATE </h3>
+								<input type="date" id="date">
+								<div id="addTsk"> 
+									<button onclick="create()"> Add Task! </button>
+								</div>
+							</div>
+						</td>
+						<td id="tasksList">
+							<center>
+								<div id="tasks" class="buttonPlace">
+									<div id= "buttonArea" ></div>
+								</div>
+							</center>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</center>
+  <script src="js/functions.js"></script>
+  <script>
+  	
+  </script>
+</body>
+</html>
