@@ -1,3 +1,18 @@
+//I did not create the following open source software:
+//node.js
+//express
+//neDB
+//bodyParser
+
+//These pieces of software can be found at:
+//npmjs.com
+//nodejs.com
+
+//I give full credit to every instance of these pieces of software in my code to those
+//who developed and managed them
+
+//I merely extended on these projects in this code
+
 var express = require('express');
 const Datastore = require('nedb');
 var bodyParser = require('body-parser');

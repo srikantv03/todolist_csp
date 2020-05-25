@@ -1,3 +1,6 @@
+//I individually developed this file
+//There is no open source code or externally developed code in this file
+
 var type = [];
 var names = [];
 var dates = [];
@@ -5,15 +8,14 @@ var complete = [];
 var toggled = false;
 var index;
 
+
 initialize();
 autoRef();
 
 async function initialize(){
+
 	const response = await fetch("/dataGet");
 	const data = await response.json();
-	console.log(data);
-	console.log(data.length);
-	
 	var b;
 	for (b = 0; b < data.length; b++){
 		var value = "btn" + b.toString();
@@ -23,8 +25,6 @@ async function initialize(){
 		dates.push(data[ind].complDate);
 		complete.push(data[ind].complete);
 	}
-
-
 
 	var a;
 	for (a = 0; a < dates.length; a++){
@@ -53,17 +53,15 @@ function getValueFromId(id){
 
 function createAndDisplayTask(text, idindex){
 
-	//create the button here
 	var button = document.createElement('button');
 	button.innerHTML = text;
 	button.id = "btn" + idindex;
 	btnId = button.id
 	button.setAttribute('onclick','onBtnClick(this.id)');
-	//create the time paragraph element
 	var time = document.createElement('p');
 	time.style.fontSize = "10px";
 	time.id = idindex
-	//append both to the button area
+
 	document.getElementById('buttonArea').appendChild(button);
 	document.getElementById('buttonArea').appendChild(time);
 
@@ -110,12 +108,11 @@ function sendData(btnId){
 		body: JSON.stringify(data)
 	};
 	fetch("/dataTransfer", options);
-	complete[btnNum-1] = "true";
 }
 
 function dateUpdate(){
 	var i;
-	for (i = 0; i < (type.length); i++){
+	for (i = 0; i < (complete.length); i++){
 		if(complete[i] == "false"){
 			var dateUntil = (Date.parse(dates[i]) - Date.now());
 			document.getElementById(i.toString()).innerHTML = gettingTime(dateUntil);
@@ -150,6 +147,7 @@ function gettingTime(timeValue){
 
 function onBtnClick(btnId){
 	btnNum = btnId.substr(3, (btnId.length-1));
+	complete[btnNum-1] = "true";
 	var options2 = {
 		method: "POST",
 		headers: {
@@ -185,12 +183,12 @@ function toggle(){
 }
 
 
-var modal = document.getElementById("myModal");
+var popup = document.getElementById("mypopup");
 var btn = document.getElementById("popupButton");
 var span = document.getElementsByClassName("close")[0];
 
 btn.onclick = function() {
-  modal.style.display = "block";
+  popup.style.display = "block";
   var c;
   for(c = 0; c < type.length; c++){
   	if(complete[c] == "false"){
@@ -214,13 +212,11 @@ btn.onclick = function() {
 }
 
 span.onclick = function() {
-  modal.style.display = "none";
+  popup.style.display = "none";
 }
 
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  if (event.target == popup) {
+    popup.style.display = "none";
   }
 }
-
-
